@@ -1,7 +1,8 @@
-```cpp
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <chrono>
+
 using namespace std;
 
 template <typename T>
@@ -45,15 +46,21 @@ void input(const string& file){
 }
 
 int main(){
-    input("data_1.txt"); //ở đây thế từng test vào
+    auto start = chrono::high_resolution_clock::now(); // start the timer
+    input("data_1.txt"); // ở đây thế từng test vào 2,3,4...
     sort(arr, 0, 999999); // gọi hàm sắp xếp
       // write the sorted data to a file
-    ofstream out("out_3.txt");
+    ofstream out("out_1.txt"); //ở đây thì sẽ xuất ra từng file 2,3,4,...
     for(int i = 0; i < 1000000; ++i){
         out << arr[i] << endl;
     }
     out.close();
+    auto end = chrono::high_resolution_clock::now(); // end the timer
+    auto time_taken = chrono::duration_cast<chrono::milliseconds>(end - start); // calculate the time taken
+
+    cout << "Time taken by code segment: " << time_taken.count() << " milliseconds." << endl;
     return 0;
 
 }
-```
+    
+
