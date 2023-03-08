@@ -45,7 +45,7 @@ void input(const string& file){
 }
 
 int main(){
-    input("data_10.txt");
+    input("data_1.txt"); //ở đây thế từng test vào
     sort(arr, 0, 999999); // gọi hàm sắp xếp
       // write the sorted data to a file
     ofstream out("out_3.txt");
